@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.internal.matchers.Null;
 
 import static org.mockito.Mockito.*;
@@ -20,7 +21,7 @@ public class DiscountServiceTest {
 
     @BeforeEach
     public void setUp() {
-        // Stub the getPrice method to return a controlled value
+        MockitoAnnotations.openMocks(this);
         when(pricingServiceMock.getPrice("PRODUCT123")).thenReturn(100.0);
     }
 
@@ -40,6 +41,7 @@ public class DiscountServiceTest {
         verify(pricingServiceMock).getPrice("PRODUCT123");
 
     }
+
 
 
 }
